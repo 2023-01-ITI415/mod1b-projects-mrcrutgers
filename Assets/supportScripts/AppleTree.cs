@@ -1,7 +1,9 @@
 using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
-/
+
 public class AppleTree : MonoBehaviour {
     [Header("Set in Inspector")]
     // Prefab for instantiating apples
@@ -14,10 +16,10 @@ public class AppleTree : MonoBehaviour {
     public float        leftAndRightEdge = 20f;
 
     // Chance that the AppleTree will change di
-    public float        chanceToChangeDirection
+    public float        chanceToChangeDirection;
 
     // Rate at which Apples will be instantiate
-    public float        secondsBetweenAppleDrop
+    public float        secondsBetweenAppleDrop;
 
     void Start () {
         // Dropping apples every second
@@ -29,6 +31,12 @@ public class AppleTree : MonoBehaviour {
         pos.x += speed * Time.deltaTime;       
         transform.position = pos; 
         // Changing Direction
+        if ( pos.x < -leftAndRightEdge ) {      
+           speed = Mathf.Abs(speed); // Move ri
+       } else if ( pos.x > leftAndRightEdge ) {
+           speed = -Mathf.Abs(speed); // Move l
+       }
+
     }
     
 }
