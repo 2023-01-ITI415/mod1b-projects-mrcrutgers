@@ -19,7 +19,7 @@ public class AppleTree : MonoBehaviour {
     public float        chanceToChangeDirection = 0.1f;
 
     // Rate at which Apples will be instantiate
-    public float        appleDropDelay = 3f;
+    public float        appleDropDelay = 1f;
 
     void Start () {
         // Dropping apples every second
