@@ -34,7 +34,7 @@ using UnityEngine;
 
              Destroy( collidedWith ); 
              scoreCounter.score += 100;
-             HighScore.TRY_SET_HIGH_SCORE( scoreCounter.score );
+             //HighScore.TRY_SET_HIGH_SCORE( scoreCounter.score );
              }
      }
  
