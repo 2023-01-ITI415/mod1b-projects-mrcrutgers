@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class RigidbodySleep : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null) rb.Sleep();
+   
+
+[RequireComponent( typeof( Rigidbody) )] // a 
+
+public class RigidbodySleep : MonoBehaviour { 
+
+private int sleepCountdown = 4;
+
+
+private Rigidbody rigid; 
+
+
+void Awake() { 
+    rigid = GetComponent < Rigidbody >(); // c 
+    } | 
+    void FixedUpdate() { 
+        if ( sleepCountdown > 0 ) { // d 
+        rigid.Sleep(); 
+        sleepCountdown--; 
+        } 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+}
+
 }
