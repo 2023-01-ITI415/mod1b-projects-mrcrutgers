@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour {
 
 
 const int LOOKBACK_COUNT = 10; // b 
+static List <Projectile> PROJECTILES = new List <Projectile>();
+
 [SerializeField]  
 private bool _awake = true; // c 
 
@@ -33,6 +35,8 @@ private Vector3 prevPos;
     awake = true; 
     prevPos = new Vector3( 1000,1000,0); // d 
     deltas.Add( 1000 );
+    PROJECTILES.Add( this );
+
     } 
     
 void FixedUpdate() { 
@@ -47,6 +51,18 @@ void FixedUpdate() {
         deltas.RemoveAt( 0 ); 
         } 
                      
+
+private void OnDestroy() { 
+    PROJECTILES.Remove( this );
+
+}
+
+static public void DESTROY_PROJECTILES() { // d 
+foreach ( Projectile p in PROJECTILES ) { 
+    Destroy( p.gameObject ); 
+    } 
+    }
+
 // Iterate over deltas and find the greatest one 
 float maxDelta = 0; 
 foreach ( float f in deltas ) { 

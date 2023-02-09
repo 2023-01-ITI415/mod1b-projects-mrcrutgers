@@ -70,7 +70,7 @@ if (! aimingMode) return;
  // Find the delta from the launchPos to the mousePos3D 
  Vector3 mouseDelta = mousePos3D -launchPos; 
  // Limit mouseDelta to the radius of the Slingshot SphereCollider // d 
- float maxMagnitude = this.GetComponent < SphereCollider >(). radius; 
+ float maxMagnitude = this.GetComponent <SphereCollider>(). radius; 
 
 if (mouseDelta.magnitude > maxMagnitude) { 
     mouseDelta.Normalize(); 
@@ -83,13 +83,17 @@ if (mouseDelta.magnitude > maxMagnitude) {
 if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e 
  // The mouse has been released 
     aimingMode = false; 
-    Rigidbody projRB = projectile.GetComponent < Rigidbody >(); 
+    Rigidbody projRB = projectile.GetComponent <Rigidbody>(); 
     projRB.isKinematic = false; // f 
     projRB.collisionDetectionMode = CollisionDetectionMode.Continuous; 
     projRB.velocity = -mouseDelta * velocityMult; 
     FollowCam.POI = projectile;
-    Instantiate < GameObject >( projLinePrefab, projectile.transform); // b | projectile = null;
+    Instantiate <GameObject>( projLinePrefab, projectile.transform); // b | projectile = null;
     projectile = null; // g 
+
+
+    MissionDemolition.SHOT_FIRED();
+
 
     } 
 
