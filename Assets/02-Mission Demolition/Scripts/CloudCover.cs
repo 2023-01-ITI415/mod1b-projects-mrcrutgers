@@ -5,12 +5,12 @@ using UnityEngine;
 public class CloudCover : MonoBehaviour
 {
 [Header( "Inscribed" )] 
-> public Sprite[] cloudSprites; 
-> public int numClouds = 40; // a 
-> public Vector3 minPos = new Vector3( -20, -5, -5 ); 
-> public Vector3 maxPos = new Vector3( 300, 40, 5 ); 
-> [Tooltip(" For scaleRange, x is the min value, and y is the max value.")] 
-> public Vector2 scaleRange = new Vector2( 1, 4 ); // b
+public Sprite[] cloudSprites; 
+public int numClouds = 40; // a 
+public Vector3 minPos = new Vector3( -20, -5, -5 ); 
+public Vector3 maxPos = new Vector3( 300, 40, 5 ); 
+[Tooltip(" For scaleRange, x is the min value, and y is the max value.")] 
+public Vector2 scaleRange = new Vector2( 1, 4 ); // b
 
 
 
@@ -23,7 +23,7 @@ public class CloudCover : MonoBehaviour
     SpriteRenderer sRend; 
     float scaleMult; 
 
-    for ( int i = 0; i < numClouds; i + + ) { 
+    for (int i = 0; i < numClouds; i + +) { 
      // Create a new GameObject (from scratch!) and get its Transform 
      cloudGO = new GameObject(); // c >
      cloudTrans = cloudGO.transform; 

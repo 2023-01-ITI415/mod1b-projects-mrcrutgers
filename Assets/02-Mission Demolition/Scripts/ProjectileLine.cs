@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent( typeof( LineRenderer) )] | 
+[RequireComponent( typeof( LineRenderer) )] 
 public class ProjectileLine : MonoBehaviour { 
 
 
@@ -26,7 +26,7 @@ ADD_LINE( this );
 
 void FixedUpdate() { 
      if ( _drawing ) { 
-         _line.positionCount+ +; // d 
+         _line.positionCount++; // d 
          _line.SetPosition( _line.positionCount - 1, transform.position ); 
          // If the Projectile Rigidbody is sleeping, stop drawing 
          if ( _projectile != null ) { // e 
@@ -36,10 +36,12 @@ void FixedUpdate() {
         } 
     } 
 } 
+
+
 private void OnDestroy() { // c 
  // Remove this ProjectileLine from PROJ_LINES 
  PROJ_LINES.Remove( this ); 
- } | 
+ } 
 static void ADD_LINE( ProjectileLine newLine ) { 
      Color col; // d 
      // Iterate over all the old lines and dim them 

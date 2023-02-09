@@ -18,7 +18,7 @@ private Rigidbody rigid;
 
 void Awake() { 
     rigid = GetComponent < Rigidbody >(); // c 
-    } | 
+    } 
     void FixedUpdate() { 
         if ( sleepCountdown > 0 ) { // d 
         rigid.Sleep(); 
