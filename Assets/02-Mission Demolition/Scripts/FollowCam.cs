@@ -5,16 +5,26 @@ using UnityEngine;
 public class FollowCam : MonoBehaviour
 {
 
+static private FollowCam S;
+
+public enum eView { none, slingshot, castle, both };
+
+
     static public GameObject POI; // The static point of interest // a 
     [Header(" Inscribed")]
     public float easing = 0.05f;
     public Vector2 minXY = Vector2. zero;
 
+public GameObject viewBothGO;
 
 
     [Header(" Dynamic")] 
     public float camZ; // The desired Z pos of the camera | 
+    
+    public eView nextView = eView.slingshot;
+
     void Awake() { 
+        S = this;
         camZ = this.transform.position.z;
  } 
 void FixedUpdate () { 
@@ -38,5 +48,37 @@ void FixedUpdate () {
 
 
 
+public void SwitchView( eView newView ) { // f
+if ( newView = = eView.none ) { 
+    newView = nextView; 
+ } 
+switch ( newView ) { // g 
+case eView.slingshot: 
+    POI = null; 
+    nextView = eView.castle; 
+    break; 
+case eView.castle: 
+    POI = MissionDemolition.GET_CASTLE(); // h 
+    nextView = eView.both; 
+    break; 
+case eView.both: 
+    POI = viewBothGO; 
+    nextView = eView.slingshot; 
+    break; 
 }
+
+} 
+
+public void SwitchView() { // i 
+ SwitchView( eView.none ); 
+} 
+
+static public void SWITCH_VIEW( eView newView ) { // j 
+    S.SwitchView( newView ); 
+    } 
+}
+
+
+
+
 

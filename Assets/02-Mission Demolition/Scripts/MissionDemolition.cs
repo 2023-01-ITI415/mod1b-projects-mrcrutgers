@@ -16,15 +16,25 @@ public class MissionDemolition : MonoBehaviour {
     static private MissionDemolition S; // a private Singleton // c 
     [Header(" Inscribed")] 
     public Text uitLevel; // The UIText_Level Text 
+
     public Text uitShots; // The UIText_Shots Text 
+
     public Vector3 castlePos; // The place to put castles 
-    public GameObject[] castles; // An array of the castles | 
+
+    public GameObject[] castles; // An array of the castles 
+
     [Header(" Dynamic")] 
+
     public int level; // The current level 
+
     public int levelMax; // The number of levels 
+
     public int shotsTaken; 
+
     public GameObject castle; // The current castle 
+
     public GameMode mode = GameMode.idle; 
+
     public string showing = "Show Slingshot"; // FollowCam mode 
 
     void Start() { 
@@ -57,6 +67,8 @@ public class MissionDemolition : MonoBehaviour {
      
      mode = GameMode.playing; 
 
+     FollowCam.SWITCH_VIEW( FollowCam.eView.both ); // a | }
+
 
 }
 
@@ -76,6 +88,9 @@ void UpdateGUI() {
         if ( (mode == GameMode.playing) && Goal.goalMet) { 
         // Change mode to stop checking for level end 
         mode = GameMode.levelEnd; 
+
+        FollowCam.SWITCH_VIEW( FollowCam.eView.both );
+
         // Start the next level in 2 seconds 
         Invoke("NextLevel", 2f); // e 
     } 
@@ -90,7 +105,7 @@ void NextLevel() {
         shotsTaken = 0; 
              } 
         StartLevel(); 
-        
+
     } 
 
 

@@ -82,12 +82,22 @@ if (mouseDelta.magnitude > maxMagnitude) {
      
 if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e 
  // The mouse has been released 
+
     aimingMode = false; 
+    
     Rigidbody projRB = projectile.GetComponent <Rigidbody>(); 
+
     projRB.isKinematic = false; // f 
+
     projRB.collisionDetectionMode = CollisionDetectionMode.Continuous; 
+
     projRB.velocity = -mouseDelta * velocityMult; 
+
+    // Switch to slingshot view immediately before setting POI 
+    FollowCam.SWITCH_VIEW( FollowCam.eView.slingshot );
+
     FollowCam.POI = projectile;
+
     Instantiate <GameObject>( projLinePrefab, projectile.transform); // b | projectile = null;
     projectile = null; // g 
 
