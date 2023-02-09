@@ -12,6 +12,7 @@ public GameObject launchPoint;
 // a 
 public GameObject projectilePrefab; 
 public float velocityMult = 10f;
+public GameObject projLinePrefab;
 
 
 // fields set dynamically 
@@ -87,7 +88,9 @@ if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e
     projRB.collisionDetectionMode = CollisionDetectionMode.Continuous; 
     projRB.velocity = -mouseDelta * velocityMult; 
     FollowCam.POI = projectile;
+    Instantiate < GameObject >( projLinePrefab, projectile.transform); // b | projectile = null;
     projectile = null; // g 
+
     } 
 
 
