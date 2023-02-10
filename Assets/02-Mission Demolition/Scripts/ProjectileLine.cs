@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent( typeof( LineRenderer) )] 
+
 public class ProjectileLine : MonoBehaviour { 
 
 
@@ -16,9 +17,13 @@ private Projectile _projectile;
 
 void Start() {
 _line = GetComponent < LineRenderer >(); 
+
 _line.positionCount = 1; // b 
+
 _line.SetPosition( 0, transform.position ); 
-_projectile = GetComponentInParent < Projectile >(); // c 
+
+_projectile = GetComponentInParent<Projectile>(); // c 
+
 ADD_LINE( this );
 
 }
@@ -36,12 +41,19 @@ void FixedUpdate() {
         } 
     } 
 } 
+}
+
 
 
 private void OnDestroy() { // c 
  // Remove this ProjectileLine from PROJ_LINES 
  PROJ_LINES.Remove( this ); 
  } 
+
+
+
+
+
 static void ADD_LINE( ProjectileLine newLine ) { 
      Color col; // d 
      // Iterate over all the old lines and dim them 
@@ -57,7 +69,6 @@ static void ADD_LINE( ProjectileLine newLine ) {
 
 
 
-    }
 
 
 

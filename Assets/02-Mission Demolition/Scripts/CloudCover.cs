@@ -23,7 +23,7 @@ public Vector2 scaleRange = new Vector2( 1, 4 ); // b
     SpriteRenderer sRend; 
     float scaleMult; 
 
-    for (int i = 0; i < numClouds; i + +) { 
+    for (int i = 0; i < numClouds; i ++) { 
      // Create a new GameObject (from scratch!) and get its Transform 
      cloudGO = new GameObject(); // c >
      cloudTrans = cloudGO.transform; 

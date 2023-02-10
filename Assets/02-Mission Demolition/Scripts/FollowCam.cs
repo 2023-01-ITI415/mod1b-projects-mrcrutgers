@@ -49,7 +49,7 @@ void FixedUpdate () {
 
 
 public void SwitchView( eView newView ) { // f
-if ( newView = = eView.none ) { 
+if ( newView == eView.none ) { 
     newView = nextView; 
  } 
 switch ( newView ) { // g 

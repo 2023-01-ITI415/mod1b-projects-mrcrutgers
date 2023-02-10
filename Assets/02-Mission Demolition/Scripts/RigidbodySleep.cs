@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RigidbodySleep : MonoBehaviour
-{
-   
+
 
 [RequireComponent( typeof( Rigidbody) )] // a 
 
@@ -29,4 +27,3 @@ void Awake() {
 
 }
 
-}

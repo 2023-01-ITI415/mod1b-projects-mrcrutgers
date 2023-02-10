@@ -11,11 +11,13 @@ public GameObject launchPoint;
 [Header(" Inscribed")]
 // a 
 public GameObject projectilePrefab; 
+
 public float velocityMult = 10f;
+
 public GameObject projLinePrefab;
 
 
-// fields set dynamically 
+// fields set dynamically
 
 [Header(" Dynamic")] // a |
 
@@ -31,7 +33,7 @@ void Awake() {
 Transform launchPointTrans = transform.Find("LaunchPoint"); 
 launchPoint = launchPointTrans.gameObject; 
 launchPoint.SetActive(false); 
-launchPointTrans.position;
+launchPos=launchPointTrans.position;
 
 } 
 
@@ -84,7 +86,7 @@ if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e
  // The mouse has been released 
 
     aimingMode = false; 
-    
+
     Rigidbody projRB = projectile.GetComponent <Rigidbody>(); 
 
     projRB.isKinematic = false; // f 
