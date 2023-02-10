@@ -7,13 +7,14 @@ public class FollowCam : MonoBehaviour
 
 
 static private FollowCam S;
-static public GameObject POI;
+    static public GameObject POI;
+
 public enum eView { none, slingshot, castle, both };
 
  // The static point of interest // a 
     [Header("Inscribed")]
     public float easing = 0.05f;
-    public Vector2 minXY = Vector2. zero;
+    public Vector2 minXY = Vector2.zero;
     public GameObject viewBothGO;
 
 
@@ -27,7 +28,7 @@ public enum eView { none, slingshot, castle, both };
  } 
 
 void FixedUpdate () { 
-Vector3 destination = Vector3. zero; 
+Vector3 destination = Vector3.zero; 
 // b  
     if ( POI != null ) { // c 
 // If the POI has a Rigidbody, check to see if it is sleeping 
@@ -54,10 +55,10 @@ Vector3 destination = Vector3. zero;
 
 
 public void SwitchView( eView newView ) { // f
-if ( newView == eView.none ) { 
+if (newView == eView.none ) { 
     newView = nextView; 
  } 
-switch ( newView ) { // g 
+switch (newView) { // g 
 case eView.slingshot: 
     POI = null; 
     nextView = eView.castle; 
@@ -75,11 +76,11 @@ case eView.both:
 } 
 
 public void SwitchView() { // i 
- SwitchView( eView.none ); 
+ SwitchView(eView.none); 
 } 
 
 static public void SWITCH_VIEW( eView newView ) { // j 
-    S.SwitchView( newView ); 
+    S.SwitchView(newView); 
     } 
 }
 
