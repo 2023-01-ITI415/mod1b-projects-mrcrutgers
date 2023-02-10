@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CloudCover : MonoBehaviour
 {
+
 [Header( "Inscribed" )] 
 public Sprite[] cloudSprites; 
 public int numClouds = 40; // a 
@@ -23,31 +24,31 @@ public Vector2 scaleRange = new Vector2( 1, 4 ); // b
     SpriteRenderer sRend; 
     float scaleMult; 
 
-    for (int i = 0; i < numClouds; i ++) { 
+    for (int i = 0; i < numClouds; i++) { 
      // Create a new GameObject (from scratch!) and get its Transform 
      cloudGO = new GameObject(); // c >
      cloudTrans = cloudGO.transform; 
-     sRend = cloudGO.AddComponent < SpriteRenderer >(); // d 
+     sRend = cloudGO.AddComponent <SpriteRenderer>(); // d 
       
-     int spriteNum = Random.Range( 0, cloudSprites.Length ); // e
+     int spriteNum = Random.Range(0, cloudSprites.Length); // e
       
      sRend.sprite = cloudSprites[ spriteNum]; 
     
      cloudTrans.position = RandomPos(); // f 
-     cloudTrans.SetParent( parentTrans, true ); 
+     cloudTrans.SetParent(parentTrans, true); 
     
-     scaleMult = Random.Range( scaleRange.x, scaleRange.y ); // b 
+     scaleMult = Random.Range(scaleRange.x, scaleRange.y); // b 
      cloudTrans.localScale = Vector3. one * scaleMult;
     }
   }
 
 
-
 Vector3 RandomPos() { // f 
+
 Vector3 pos = new Vector3(); 
-pos.x = Random.Range( minPos.x, maxPos.x ); 
-pos.y = Random.Range( minPos.y, maxPos.y ); 
-pos.z = Random.Range( minPos.z, maxPos.z ); 
+pos.x = Random.Range(minPos.x, maxPos.x); 
+pos.y = Random.Range(minPos.y, maxPos.y); 
+pos.z = Random.Range(minPos.z, maxPos.z); 
 return pos;
 
 }

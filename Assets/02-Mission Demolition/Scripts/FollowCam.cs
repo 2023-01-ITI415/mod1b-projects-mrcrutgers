@@ -5,38 +5,43 @@ using UnityEngine;
 public class FollowCam : MonoBehaviour
 {
 
-static private FollowCam S;
 
+static private FollowCam S;
+static public GameObject POI;
 public enum eView { none, slingshot, castle, both };
 
-
-    static public GameObject POI; // The static point of interest // a 
-    [Header(" Inscribed")]
+ // The static point of interest // a 
+    [Header("Inscribed")]
     public float easing = 0.05f;
     public Vector2 minXY = Vector2. zero;
+    public GameObject viewBothGO;
 
-public GameObject viewBothGO;
 
-
-    [Header(" Dynamic")] 
+    [Header("Dynamic")] 
     public float camZ; // The desired Z pos of the camera | 
-    
     public eView nextView = eView.slingshot;
 
     void Awake() { 
         S = this;
         camZ = this.transform.position.z;
  } 
+
 void FixedUpdate () { 
-    // A single-line if statement doesn’t require braces 
-    if (POI == null) return; // if there is no POI, then return // b 
- 
-    // Get the position of the poi 
-    Vector3 destination = POI.transform.position; 
+Vector3 destination = Vector3. zero; 
+// b  
+    if ( POI != null ) { // c 
+// If the POI has a Rigidbody, check to see if it is sleeping 
+    Rigidbody poiRigid = POI.GetComponent < Rigidbody >(); 
+    if ( ( poiRigid != null ) && poiRigid.IsSleeping() ) { // d 
+    POI = null; 
+     } 
+      } 
+    if (POI != null ) { // e 
+    destination = POI.transform.position; 
+    }
+
     destination.x = Mathf.Max( minXY.x, destination.x ); 
     destination.y = Mathf.Max( minXY.y, destination.y );
-
-
     destination = Vector3. Lerp( transform.position, destination, easing);
     // Force destination.z to be camZ to keep the camera far enough away 
     destination.z = camZ; 
@@ -44,7 +49,7 @@ void FixedUpdate () {
     transform.position = destination; 
     Camera.main.orthographicSize = destination.y + 10;
 
-    }
+}
 
 
 

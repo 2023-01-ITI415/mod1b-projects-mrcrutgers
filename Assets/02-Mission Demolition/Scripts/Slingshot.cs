@@ -6,9 +6,8 @@ using UnityEngine;
 public class Slingshot : MonoBehaviour
 {
   
-public GameObject launchPoint; 
 
-[Header(" Inscribed")]
+[Header("Inscribed")]
 // a 
 public GameObject projectilePrefab; 
 
@@ -19,7 +18,9 @@ public GameObject projLinePrefab;
 
 // fields set dynamically
 
-[Header(" Dynamic")] // a |
+[Header("Dynamic")] // a |
+
+public GameObject launchPoint; 
 
 public Vector3 launchPos; // b 
 
@@ -33,7 +34,7 @@ void Awake() {
 Transform launchPointTrans = transform.Find("LaunchPoint"); 
 launchPoint = launchPointTrans.gameObject; 
 launchPoint.SetActive(false); 
-launchPos=launchPointTrans.position;
+launchPos = launchPointTrans.position;
 
 } 
 
@@ -79,9 +80,10 @@ if (mouseDelta.magnitude > maxMagnitude) {
     mouseDelta *= maxMagnitude; 
     } 
     // Move the projectile to this new position 
-    Vector3 projPos = launchPos + mouseDelta; 
-    projectile.transform.position = projPos; 
+Vector3 projPos = launchPos + mouseDelta; 
+projectile.transform.position = projPos; 
      
+
 if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e 
  // The mouse has been released 
 
@@ -95,10 +97,12 @@ if ( Input.GetMouseButtonUp( 0) ) { // This 0 is a zero, not an o // e
 
     projRB.velocity = -mouseDelta * velocityMult; 
 
+    FollowCam.POI = projectile;
+
     // Switch to slingshot view immediately before setting POI 
     FollowCam.SWITCH_VIEW( FollowCam.eView.slingshot );
 
-    FollowCam.POI = projectile;
+
 
     Instantiate <GameObject>( projLinePrefab, projectile.transform); // b | projectile = null;
     projectile = null; // g 

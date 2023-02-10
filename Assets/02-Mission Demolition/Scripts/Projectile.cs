@@ -24,12 +24,8 @@ public bool awake {
     private set { _awake = value; } 
 } 
 
-private Vector3 prevPos; 
-// This private List stores the history of Projectile’s move distance 
- private List < float > deltas = new List < float >(); 
- private Rigidbody rigid;
 
- public void Start() { 
+public void Start() { 
     rigid = GetComponent < Rigidbody >(); 
     awake = true; 
     prevPos = new Vector3( 1000,1000,0); // d 
@@ -37,6 +33,13 @@ private Vector3 prevPos;
     PROJECTILES.Add( this );
 
     } 
+
+private Vector3 prevPos; 
+// This private List stores the history of Projectile’s move distance 
+ private List < float > deltas = new List < float >(); 
+ private Rigidbody rigid;
+
+
     
 public void FixedUpdate() { 
     if ( rigid.isKinematic || !awake ) return; // e 
