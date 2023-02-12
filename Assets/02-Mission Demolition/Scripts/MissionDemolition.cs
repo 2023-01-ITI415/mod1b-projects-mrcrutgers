@@ -40,13 +40,13 @@ public class MissionDemolition : MonoBehaviour {
 void StartLevel() { 
     // Get rid of the old castle if one exists 
     if (castle != null) { 
-     Destroy( castle ); 
+     Destroy(castle); 
     } 
 
     // Destroy old projectiles if they exist (the method is not yet written) 
     Projectile.DESTROY_PROJECTILES(); // This will be underlined in red // d 
     // Instantiate the new castle 
-    castle = Instantiate <GameObject>( castles[level] ); 
+    castle = Instantiate <GameObject>(castles[level]); 
     castle.transform.position = castlePos; 
     // Reset the goal 
     Goal.goalMet = false; 
@@ -55,7 +55,7 @@ void StartLevel() {
      
     mode = GameMode.playing; 
 
-    FollowCam.SWITCH_VIEW( FollowCam.eView.both ); // a | }
+    FollowCam.SWITCH_VIEW(FollowCam.eView.both); // a | }
 
 
 }

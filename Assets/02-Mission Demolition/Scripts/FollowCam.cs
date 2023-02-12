@@ -7,7 +7,7 @@ public class FollowCam : MonoBehaviour
 
 
 static private FollowCam S;
-    static public GameObject POI;
+static public GameObject POI;
 
 public enum eView { none, slingshot, castle, both };
 
@@ -30,20 +30,20 @@ public enum eView { none, slingshot, castle, both };
 void FixedUpdate () { 
 Vector3 destination = Vector3.zero; 
 // b  
-    if ( POI != null ) { // c 
+    if (POI != null) { // c 
 // If the POI has a Rigidbody, check to see if it is sleeping 
-    Rigidbody poiRigid = POI.GetComponent < Rigidbody >(); 
-    if ( ( poiRigid != null ) && poiRigid.IsSleeping() ) { // d 
+    Rigidbody poiRigid = POI.GetComponent <Rigidbody>(); 
+    if ((poiRigid != null) && poiRigid.IsSleeping()) { // d 
     POI = null; 
      } 
       } 
-    if (POI != null ) { // e 
+    if (POI != null) { // e 
     destination = POI.transform.position; 
     }
 
-    destination.x = Mathf.Max( minXY.x, destination.x ); 
-    destination.y = Mathf.Max( minXY.y, destination.y );
-    destination = Vector3. Lerp( transform.position, destination, easing);
+    destination.x = Mathf.Max(minXY.x, destination.x); 
+    destination.y = Mathf.Max(minXY.y, destination.y);
+    destination = Vector3.Lerp(transform.position, destination, easing);
     // Force destination.z to be camZ to keep the camera far enough away 
     destination.z = camZ; 
     // Set the camera to the destination 
@@ -54,8 +54,8 @@ Vector3 destination = Vector3.zero;
 
 
 
-public void SwitchView( eView newView ) { // f
-if (newView == eView.none ) { 
+public void SwitchView(eView newView) { // f
+if (newView == eView.none) { 
     newView = nextView; 
  } 
 switch (newView) { // g 
@@ -79,7 +79,7 @@ public void SwitchView() { // i
  SwitchView(eView.none); 
 } 
 
-static public void SWITCH_VIEW( eView newView ) { // j 
+static public void SWITCH_VIEW(eView newView) { // j 
     S.SwitchView(newView); 
     } 
 }
